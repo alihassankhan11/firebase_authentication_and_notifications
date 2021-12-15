@@ -39,49 +39,49 @@ class _NotificationPageState extends State<NotificationPage> {
 
     messageText = 'yaha message ana ha';
 //___________________________________Forground message
-    FirebaseMessaging.onMessage.listen(
-      (RemoteMessage message) {
-        // messaging.getToken;
+    // FirebaseMessaging.onMessage.listen(
+    //   (RemoteMessage message) {
+    //     // messaging.getToken;
 
-        print('Got a message whilst in the foreground!');
-        print('Message data: ${message.data}');
-        RemoteNotification notification = message.notification!;
-        AndroidNotification android = message.notification!.android!;
-        if (message.notification != null) {
-          setState(() {
-            messageText = message.notification!.body!;
-          });
+    //     print('Got a message whilst in the foreground!');
+    //     print('Message data: ${message.data}');
+    //     RemoteNotification notification = message.notification!;
+    //     AndroidNotification android = message.notification!.android!;
+    //     if (message.notification != null) {
+    //       setState(() {
+    //         messageText = message.notification!.body!;
+    //       });
 
-          print(
-              'Message also contained a notification: ${message.notification?.title}');
-        }
-      },
-    );
+    //       print(
+    //           'Message also contained a notification: ${message.notification?.title}');
+    //     }
+    //   },
+    // );
   }
 
 //___________________________________Background message
-  // Future<void> _firebaseMessagingBackgroundHandler(
-  //   RemoteMessage message,
-  // ) async {
-  //   // If you're going to use other Firebase services in the background, such as Firestore,
-  //   // make sure you call `initializeApp` before using other Firebase services.
+  Future<void> _firebaseMessagingBackgroundHandler(
+    RemoteMessage message,
+  ) async {
+    // If you're going to use other Firebase services in the background, such as Firestore,
+    // make sure you call `initializeApp` before using other Firebase services.
 
-  //   if (message.notification != null) {
-  //     // setState(() {
-  //     //   messageText = message.notification!.body!;
-  //     // });
+    if (message.notification != null) {
+      // setState(() {
+      //   messageText = message.notification!.body!;
+      // });
 
-  //     print(
-  //         'Message also contained a notification: ${message.notification?.title}');
-  //   }
-  //   // print("Handling a background message: ${message.notification?.title}");
-  // }
+      print(
+          'Message also contained a notification: ${message.notification?.title}');
+    }
+    // print("Handling a background message: ${message.notification?.title}");
+  }
 
-  // void sdfajs() {
-  //   FirebaseMessaging.onBackgroundMessage(
-  //     _firebaseMessagingBackgroundHandler,
-  //   );
-  // }
+  void sdfajs() {
+    FirebaseMessaging.onBackgroundMessage(
+      _firebaseMessagingBackgroundHandler,
+    );
+  }
 
 //_____________________________________Background message with tap interection means jab user notification par tap kary ga to notification ma data ly kar hum koi function perform karwa sakty ha
   // void _handleMessage(RemoteMessage message) {
@@ -166,7 +166,7 @@ class _NotificationPageState extends State<NotificationPage> {
             'id': '1',
             'status': 'done'
           },
-          'to': '/topics/ali',
+          'to': '/topics/hassan',
         },
       ),
     );
